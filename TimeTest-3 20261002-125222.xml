@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TimeTest" project="Time" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="time.TimeTest" time="0.004" displayname="TimeTest" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]">
+    <testcase name="testGetSeconds" classname="time.TimeTest" time="0.003" displayname="testGetSeconds()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetSeconds()]"/>
+    <testcase name="testGetAllMillisecondsInvalidFormat" classname="time.TimeTest" time="0.0" displayname="testGetAllMillisecondsInvalidFormat()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetAllMillisecondsInvalidFormat()]"/>
+    <testcase name="testGetTotalMinutes" classname="time.TimeTest" time="0.0" displayname="testGetTotalMinutes()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetTotalMinutes()]"/>
+    <testcase name="testGetAllMillisecondsInvalidLength" classname="time.TimeTest" time="0.0" displayname="testGetAllMillisecondsInvalidLength()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetAllMillisecondsInvalidLength()]"/>
+    <testcase name="testGetTotalSeconds" classname="time.TimeTest" time="0.0" displayname="testGetTotalSeconds()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetTotalSeconds()]"/>
+    <testcase name="testGetAllMillisecondsGood" classname="time.TimeTest" time="0.0" displayname="testGetAllMillisecondsGood()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetAllMillisecondsGood()]"/>
+    <testcase name="testGetTotalHours" classname="time.TimeTest" time="0.0" displayname="testGetTotalHours()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetTotalHours()]"/>
+    <testcase name="testGetMilliseconds" classname="time.TimeTest" time="0.0" displayname="testGetMilliseconds()" uniqueid="[engine:junit-jupiter]/[class:time.TimeTest]/[method:testGetMilliseconds()]"/>
+  </testsuite>
+</testrun>
