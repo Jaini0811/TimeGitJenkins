@@ -3,76 +3,77 @@ package time;
 
 public class Time {
 
-    public static int getTotalSeconds(String time) {
+    private static String[] parseTime(String time, int expectedParts) {
 
-        if (time.length() > 8) {
+        String[] parts = time.split(":", -1);
+
+        if (parts.length != expectedParts) {
             throw new NumberFormatException("Invalid time format");
         }
 
-        int hours = Integer.parseInt(time.substring(0, 2));
-        int minutes = Integer.parseInt(time.substring(3, 5));
-        int seconds = Integer.parseInt(time.substring(6, 8));
+        for (String part : parts) {
+            if (!part.matches("[0-9]{2}")) {
+                throw new NumberFormatException("Invalid time format");
+            }
+        }
+
+        return parts;
+    }
+
+    public static int getTotalSeconds(String time) {
+
+        String[] parts = time.split(":", -1);
+
+        if (parts.length != 3 && parts.length != 4) {
+            throw new NumberFormatException("Invalid time format");
+        }
+
+        parts = parseTime(time, parts.length);
+
+        int hours = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
+        int seconds = Integer.parseInt(parts[2]);
 
         return hours * 3600 + minutes * 60 + seconds;
     }
 
     public static int getSeconds(String time) {
-        return Integer.parseInt(time.substring(6, 8));
+        String[] parts = parseTime(time, 3);
+        return Integer.parseInt(parts[2]);
     }
 
     public static int getTotalMinutes(String time) {
+        String[] parts = parseTime(time, 3);
 
-        if (time.length() > 8) {
-            throw new NumberFormatException("Invalid time format");
-        }
-
-        int hours = Integer.parseInt(time.substring(0, 2));
-        int minutes = Integer.parseInt(time.substring(3, 5));
+        int hours = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
 
         return hours * 60 + minutes;
     }
 
     public static int getTotalHours(String time) {
-        return Integer.parseInt(time.substring(0, 2));
+        String[] parts = parseTime(time, 3);
+        return Integer.parseInt(parts[0]);
     }
 
     public static int getMilliseconds(String time) {
-
-        if (time.length() > 11) {
-            throw new NumberFormatException("Invalid time format");
-        }
-
-        return Integer.parseInt(time.substring(9, 11));
+        String[] parts = parseTime(time, 4);
+        return Integer.parseInt(parts[3]);
     }
 
     public static int getAllMilliseconds(String time) {
+        String[] parts = parseTime(time, 4);
 
-        if (time == null || time.length() != 11) {
-            throw new NumberFormatException("Invalid time format");
-        }
+        int totalSeconds = getTotalSeconds(time);
+        int milliseconds = Integer.parseInt(parts[3]);
 
-        if (time.charAt(2) != ':' || time.charAt(5) != ':'
-                || time.charAt(8) != ':') {
-            throw new NumberFormatException("Invalid time format");
-        }
-
-        int hours = Integer.parseInt(time.substring(0, 2));
-        int minutes = Integer.parseInt(time.substring(3, 5));
-        int seconds = Integer.parseInt(time.substring(6, 8));
-        int milliseconds = Integer.parseInt(time.substring(9, 11));
-
-        return hours * 3600000
-                + minutes * 60000
-                + seconds * 1000
-                + milliseconds;
+        return totalSeconds * 1000 + milliseconds;
     }
 
-   
     public static void main(String[] args) {
 
-        int totalSeconds = getTotalSeconds("10:10:10");
+        int totalSeconds = getTotalSeconds("10:10:10:00");
 
-        System.out.println("Total Seconds = " + totalSeconds);
+        System.out.println("Github Seconds = " + totalSeconds);
     }
-
 }
